@@ -1,0 +1,27 @@
+.navbar{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  border-bottom: 2px solid black;
+}
+.icon-navbar{
+  width: 100px;
+  height: 100px;
+  margin: 0 20px;
+}
+.list{
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+.list li{
+  width: 100px;
+}
+
+.cart{
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+}
