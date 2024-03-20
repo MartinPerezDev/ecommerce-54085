@@ -1,7 +1,9 @@
+import { PiShoppingCartSimple } from "react-icons/pi";
+
 const CartWidget = () => {
   return (
-    <div>
-      <img className="cart" src="/img/cart.png" />
+    <div className="cartwidget">
+      <PiShoppingCartSimple size={40} />
       <p>1</p>
     </div>
   );
