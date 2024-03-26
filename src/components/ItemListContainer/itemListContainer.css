@@ -1,0 +1,35 @@
+.item-list-container{
+  
+}
+.item-list{
+  display: flex;
+  justify-content:flex-start;
+  flex-wrap: wrap;
+}
+.card{
+  width: 21%;
+  margin: 3% 2%;
+}
+.image-box-card{
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.061);
+  padding: 50px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-card{
+  width: 90%;
+}
+.info-card{
+  padding: 20px 0;
+}
+.info-card .title-card{
+  font-size: 1.2rem;
+  padding: 0 0 15px 0;
+}
+.info-card .description-card{
+  font-size: 1rem;
+  font-weight: lighter;
+}

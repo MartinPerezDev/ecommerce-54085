@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 const Banner = () => {
-  
+
   useEffect(()=>{
 
 
@@ -11,7 +11,7 @@ const Banner = () => {
   })
 
   return(
-    <img src="" style={{ width: "10%" }} />
+    <img src="/img/banner.jpg" style={{ width: "10%" }} />
   )
 }
 
