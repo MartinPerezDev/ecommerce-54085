@@ -2,6 +2,7 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemCount from "./components/ItemCount/ItemCount";
+import Banner from "./components/Examples/Banner/Banner";
 
 function App() {
   //agregar al carrito
@@ -12,7 +13,8 @@ function App() {
   return (
     <div>
       <NavBar />
-      <ItemListContainer saludo="Hola Mundo!" />
+      <Banner />
+      <ItemListContainer saludo="Nuestros productos" />
       <ItemCount addToCart={addToCart} />
     </div>
   );

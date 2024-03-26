@@ -3,13 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 70px;
   border-bottom: 2px solid black;
   background-color: rgb(243, 243, 243);
 }
 .icon-navbar{
-  height: 70%;
-  padding: 0 20px;
+  height: 80%;
+  margin: 0 20px;
 }
 .categories-navbar{
   display: flex;
@@ -17,7 +17,7 @@
   list-style: none;
 }
 .categorie-navbar{
-  font-weight: bold;
+  font-weight: 500;
   text-align: center;
   width: auto;
   height: 100%;
