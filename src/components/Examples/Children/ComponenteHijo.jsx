@@ -1,8 +1,8 @@
-const ComponenteHijo = ({ children }) => {
+const ComponenteHijo = ({ titulo, children }) => {
 
   return (
-    <div>
-      <h1>Componente hijo</h1>
+    <div style={{border: "1px solid black"}}>
+      <h1>{titulo}</h1>
       { children }
     </div>
   )

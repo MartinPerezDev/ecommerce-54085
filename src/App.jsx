@@ -1,21 +1,21 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import ItemCount from "./components/ItemCount/ItemCount";
-import Banner from "./components/Examples/Banner/Banner";
+import ListadoTareas from "./components/Examples/RenderProps/ListadoTareas";
+import ManejoDeLista from "./components/Examples/RenderProps/ManejoDeLista";
 
 function App() {
-  //agregar al carrito
-  const addToCart = (count) => {
-    console.log(count);
-  };
-
   return (
     <div>
       <NavBar />
-      <Banner />
-      <ItemListContainer saludo="Nuestros productos" />
-      <ItemCount addToCart={addToCart} />
+      <ManejoDeLista
+        render={(tareas, añadirTarea, eliminarTarea) => (
+          <ListadoTareas
+            tareas={tareas}
+            añadirTarea={añadirTarea}
+            eliminarTarea={eliminarTarea}
+          />
+        )}
+      />
     </div>
   );
 }
