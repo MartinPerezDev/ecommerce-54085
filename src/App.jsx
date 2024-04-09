@@ -1,22 +1,24 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import ItemCount from "./components/ItemCount/ItemCount";
-import Banner from "./components/Examples/Banner/Banner";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
-  //agregar al carrito
-  const addToCart = (count) => {
-    console.log(count);
-  };
 
   return (
-    <div>
+    <BrowserRouter>
       <NavBar />
-      <Banner />
-      <ItemListContainer saludo="Nuestros productos" />
-      <ItemCount addToCart={addToCart} />
-    </div>
+
+      <Routes>
+        <Route path="/" element={<ItemListContainer saludo="Nuestros productos" />} />
+
+        <Route path="/category/:idCategory" element={<ItemListContainer saludo="Nuestros productos" />} />
+
+        <Route path="/detail/:idProduct" element={<ItemDetailContainer />} />
+
+      </Routes>    
+    </BrowserRouter>
   );
 }
 
