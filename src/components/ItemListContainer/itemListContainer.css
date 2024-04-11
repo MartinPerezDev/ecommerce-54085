@@ -12,6 +12,8 @@
 .card{
   width: 21%;
   margin: 3% 2%;
+  display: flex;
+  flex-direction: column;
 }
 .image-box-card{
   width: 100%;
@@ -26,7 +28,10 @@
   width: 90%;
 }
 .info-card{
+  flex: 1;
   padding: 20px 0;
+  position: relative;
+  padding-bottom: 100px;
 }
 .info-card .title-card{
   font-size: 1.2rem;
@@ -35,4 +40,22 @@
 .info-card .description-card{
   font-size: 1rem;
   font-weight: 300;
+}
+.info-card .box-button-item{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(219, 219, 219);
+  border-radius: 5px;
+}
+.info-card .button-item{
+  width: 100px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(48, 48, 48);
 }

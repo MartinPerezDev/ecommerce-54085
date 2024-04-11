@@ -5,7 +5,7 @@ import "./navbar.css";
 const NavBar = () => {
   return (
     <nav className="navbar">
-      <Link to="/" className="icon-navbar">
+      <Link to="/" className="brand-navbar">
         <img className="icon-navbar" src="/img/logitech-icon.png" />
       </Link>
 
