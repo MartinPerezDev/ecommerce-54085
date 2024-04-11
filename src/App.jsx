@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import EjemploFormulario from "./components/Examples/EjemploFormulario";
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
         <Route path="/category/:idCategory" element={<ItemListContainer saludo="Nuestros productos" />} />
 
         <Route path="/detail/:idProduct" element={<ItemDetailContainer />} />
+
+        <Route path="/example" element={ <EjemploFormulario /> } />
 
       </Routes>    
     </BrowserRouter>
