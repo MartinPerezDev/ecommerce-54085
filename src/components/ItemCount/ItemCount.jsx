@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-const ItemCount = ({ addToCart }) => {
+const ItemCount = ({ handleAddToCart }) => {
   const [count, setCount] = useState(1);
 
-  const sumar = () => {
+  const handleAdd = () => {
     //proximamente codicionamos con el stock
     setCount(count + 1);
   };
 
-  const restar = () => {
+  const handleSubtract = () => {
     if (count > 1) {
       setCount(count - 1);
     }
@@ -17,12 +17,12 @@ const ItemCount = ({ addToCart }) => {
   return (
     <div>
       <div>
-        <button onClick={restar}>-</button>
+        <button onClick={handleSubtract}>-</button>
         <p> {count} </p>
-        <button onClick={sumar}>+</button>
+        <button onClick={handleAdd}>+</button>
       </div>
       <div>
-        <button onClick={ ()=> addToCart(count)} >Agregar al carrito</button>
+        <button onClick={ ()=> handleAddToCart(count)} >Agregar al carrito</button>
       </div>
     </div>
   );
