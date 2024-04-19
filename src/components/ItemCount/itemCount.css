@@ -1,0 +1,25 @@
+.item-count{
+  margin-top: 50px;
+  display: flex;
+}
+.button-add{
+  border-radius: 5px;
+  background-color: rgb(41, 41, 41);
+  color: white;
+  padding: 0 30px;
+  font-size: 15px;
+}
+.controls-count{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+.button-count{
+  border-radius: 5px;
+  background-color: rgb(38, 38, 38);
+  color: white;
+  padding: 5px 15px;
+  font-weight: bold;
+}

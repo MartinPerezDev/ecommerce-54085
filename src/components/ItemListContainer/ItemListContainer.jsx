@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import getProducts from "../../data/getProducts";
 import { useParams } from "react-router-dom"
+import ItemLoading from "../../loadings/ItemLoading";
+
 import "./itemListContainer.css"
 
 const ItemListContainer = ({ saludo }) => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   const { idCategory } = useParams()
 
   useEffect(() => {
+    setLoading(true)
+
     getProducts
       .then((respuesta) => {
         if(idCategory){
@@ -22,13 +27,15 @@ const ItemListContainer = ({ saludo }) => {
         }
       })
       .catch((error) => console.log(error))
-      .finally(() => console.log("Finalizo la promesa"));
+      .finally(() => setLoading(false) );
   }, [idCategory]);
 
   return (
     <div className="item-list-container">
       <h2 className="title-items">{saludo}</h2>
-      <ItemList products={products} />
+      {
+        loading ? <ItemLoading /> : <ItemList products={products} />
+      }
     </div>
   );
 };

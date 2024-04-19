@@ -7,10 +7,12 @@ const CartWidget = () => {
 
   const { totalQuantity } = useContext(CartContext)
 
+  const quantity = totalQuantity()
+
   return (
     <Link to="/cart" className="cartwidget">
-      <PiShoppingCartSimple size={30} />
-      <p>{ totalQuantity() }</p>
+      <PiShoppingCartSimple size={30} className={ quantity === 0 ? "icon-cart-red" : "icon-cart" } />
+      <p>{ quantity > 0 && quantity }</p>
     </Link>
   );
 };

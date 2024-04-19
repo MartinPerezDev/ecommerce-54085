@@ -9,7 +9,28 @@ const CartProvider = ({ children }) => {
   //logica de no aceptar duplicados
   
   const addToCart = (newProduct) => {
-    setCart([...cart, newProduct])
+    const condicion = isInCart(newProduct.id)
+    if(condicion){
+      //sumar la cantidad a ese producto en especifico
+      const productsMod = cart.map( (productCart)=> {
+        if(productCart.id === newProduct.id){
+          return { ...productCart, quantity: productCart.quantity + newProduct.quantity }
+        }else{
+          return productCart
+        }
+      })
+
+      setCart(productsMod)
+    }else{
+      //agregamos como producto nuevo
+      setCart([...cart, newProduct])
+    }
+  }
+
+  //funcion para detectar si x producto esta en el carrito
+  const isInCart = (productId) => {
+    const condicion = cart.some( (product)=> product.id === productId )
+    return condicion
   }
 
   const totalQuantity = () => {
@@ -21,12 +42,18 @@ const CartProvider = ({ children }) => {
     setCart([])
   }
 
-  //eliminar un producto especifico por su id
+  const deleteProductById = (productId) => {
+    const productsFilter = cart.filter( (productCart)=> productCart.id !== productId )
+    setCart(productsFilter)
+  }
 
-  //devolver el precio total de la compra
+  const totalPrice = () => {
+    const total = cart.reduce( (total, product) => total + ( product.quantity * product.price ), 0)
+    return total
+  }
 
   return(
-    <CartContext.Provider value={ { cart, addToCart, totalQuantity, clearCart } } >
+    <CartContext.Provider value={ { cart, addToCart, totalQuantity, clearCart, deleteProductById, totalPrice } } >
       {children}
     </CartContext.Provider>
   )
