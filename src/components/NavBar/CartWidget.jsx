@@ -11,7 +11,7 @@ const CartWidget = () => {
 
   return (
     <Link to="/cart" className="cartwidget">
-      <PiShoppingCartSimple size={30} className={ quantity === 0 ? "icon-cart-red" : "icon-cart" } />
+      <PiShoppingCartSimple size={30} />
       <p>{ quantity > 0 && quantity }</p>
     </Link>
   );

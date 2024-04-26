@@ -23,3 +23,12 @@
   display: flex;
   justify-content: center;
 }
+.button-go-cart{
+  width: 150px;
+  border-radius: 5px;
+  background-color: rgb(41, 41, 41);
+  color: white;
+  padding: 20px 30px;
+  font-size: 15px;
+  text-decoration: none;
+}

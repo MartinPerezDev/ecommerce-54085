@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./itemDetailContainer.css";
 
 const ItemDetail = ({ product }) => {
-  const { cart, addToCart } = useContext(CartContext)
+  const { addToCart } = useContext(CartContext)
   const [clickAdd, setClickAdd] = useState(false)
 
   const handleAddToCart = (count) => {
@@ -23,7 +23,7 @@ const ItemDetail = ({ product }) => {
         <p className="description">{product.fullDescription}</p>
         <p className="price">Precio: ${product.price}</p>
         {
-          clickAdd ? <Link to="/cart" >Ir al carrito</Link> : <ItemCount handleAddToCart={handleAddToCart} stock={product.stock} />
+          clickAdd ? <Link to="/cart" className="button-go-cart" >Ir al carrito</Link> : <ItemCount handleAddToCart={handleAddToCart} stock={product.stock} />
         }
       </div>
       <div className="image-detail">

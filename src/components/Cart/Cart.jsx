@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import "./cart.css";
 
@@ -9,7 +11,10 @@ const Cart = () => {
 
   //early return
   if(cart.length === 0){
-    return <div>No hay productos en el carrito</div>
+    return <div className="cart-empty">
+      <h2>No hay productos en el carrito 😥</h2>
+      <Link className="button-cart-empty" to="/">Buscar Productos</Link>
+    </div>
   }
 
   return (
@@ -24,13 +29,16 @@ const Cart = () => {
             <p className="info-product-cart">Precio c/u: {product.price}</p>
             <p className="info-product-cart">Total: {product.quantity * product.price}</p>
 
-            <button onClick={ () => deleteProductById(product.id)} >Eliminar producto</button>
+            <button onClick={ () => deleteProductById(product.id)} ><FaTrashAlt size={30} /></button>
           </div>
         ))}
       </div>
       <div className="controls-cart">
-        <h2> Precio total: {totalPrice()}</h2>
-        <button className="button-cart" onClick={clearCart}>
+        <h2> Precio total: ${totalPrice()}</h2>
+        <Link to="/checkout" className="button-go-checkout">
+          Continuar compra
+        </Link>
+        <button className="button-clear-cart" onClick={clearCart}>
           Vaciar carrito
         </button>
       </div>
