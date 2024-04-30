@@ -6,8 +6,6 @@ const CartContext = createContext()
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([])
   
-  //logica de no aceptar duplicados
-  
   const addToCart = (newProduct) => {
     const condicion = isInCart(newProduct.id)
     if(condicion){

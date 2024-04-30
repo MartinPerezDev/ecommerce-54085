@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
+
+import ItemList from "./ItemList";
 import db from "../../db/db";
 
 import "./itemListContainer.css";
@@ -13,14 +14,18 @@ const ItemListContainer = ({ saludo }) => {
   const { idCategory } = useParams();
 
   const getProducts = async () => {
-    const dataDb = await getDocs(collection(db, "products"));
+    try {
+      const dataDb = await getDocs(collection(db, "products"));
 
-    const data = dataDb.docs.map((productDb) => {
-      return { id: productDb.id, ...productDb.data() };
-    });
+      const data = dataDb.docs.map((productDb) => {
+        return { id: productDb.id, ...productDb.data() };
+      });
 
-    setProducts(data);
-    setLoading(false)
+      setProducts(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const getProductsByCategory = async () => {
@@ -36,7 +41,7 @@ const ItemListContainer = ({ saludo }) => {
     });
 
     setProducts(data);
-    setLoading(false)
+    setLoading(false);
   };
 
   useEffect(() => {

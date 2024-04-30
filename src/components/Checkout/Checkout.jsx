@@ -4,6 +4,8 @@ import { CartContext } from "../../context/CartContext";
 import { addDoc, collection, setDoc, doc } from "firebase/firestore";
 import db from "../../db/db";
 import { Link } from "react-router-dom";
+import validateForm from "../../utils/validationYup.js";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
   const [dataForm, setDataForm] = useState({
@@ -18,7 +20,7 @@ const Checkout = () => {
     setDataForm({ ...dataForm, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     //le damos formato a la orden
     event.preventDefault();
     const order = {
@@ -26,8 +28,13 @@ const Checkout = () => {
       products: [...cart],
       total: totalPrice(),
     };
-
-    uploadOrder(order);
+    //validar los campos del formulario
+    const response = await validateForm(dataForm)
+    if(response.status === "success"){
+      uploadOrder(order);
+    }else{
+      toast(response.error)
+    }
   };
 
   const uploadOrder = async (order) => {
