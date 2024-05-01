@@ -7,6 +7,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import { CartProvider } from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
+import Banner from "./components/Examples/Banner/Banner";
 
 import "./App.css";
 
@@ -15,23 +16,14 @@ function App() {
     <BrowserRouter>
       <CartProvider>
         <NavBar />
+        <Banner />
         <ToastContainer theme="dark" />
 
         <Routes>
-          <Route
-            path="/"
-            element={<ItemListContainer saludo="Nuestros productos" />}
-          />
-
-          <Route
-            path="/category/:idCategory"
-            element={<ItemListContainer saludo="Nuestros productos" />}
-          />
-
+          <Route path="/" element={<ItemListContainer saludo="Nuestros productos" />} />
+          <Route path="/category/:idCategory" element={<ItemListContainer saludo="Nuestros productos" />} />
           <Route path="/detail/:idProduct" element={<ItemDetailContainer />} />
-
           <Route path="/cart" element={<Cart />} />
-
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </CartProvider>

@@ -1,11 +1,15 @@
 import { useState, useContext } from "react";
-import FormularioCheckout from "./FormularioCheckout";
-import { CartContext } from "../../context/CartContext";
 import { addDoc, collection, setDoc, doc } from "firebase/firestore";
-import db from "../../db/db";
+
 import { Link } from "react-router-dom";
-import validateForm from "../../utils/validationYup.js";
 import { toast } from "react-toastify";
+
+import FormularioCheckout from "./FormularioCheckout";
+import db from "../../db/db";
+import validateForm from "../../utils/validationYup.js";
+import { CartContext } from "../../context/CartContext";
+
+import "./checkout.css";
 
 const Checkout = () => {
   const [dataForm, setDataForm] = useState({
@@ -20,7 +24,7 @@ const Checkout = () => {
     setDataForm({ ...dataForm, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     //le damos formato a la orden
     event.preventDefault();
     const order = {
@@ -29,11 +33,11 @@ const Checkout = () => {
       total: totalPrice(),
     };
     //validar los campos del formulario
-    const response = await validateForm(dataForm)
-    if(response.status === "success"){
+    const response = await validateForm(dataForm);
+    if (response.status === "success") {
       uploadOrder(order);
-    }else{
-      toast(response.error)
+    } else {
+      toast(response.error);
     }
   };
 
@@ -42,41 +46,43 @@ const Checkout = () => {
     const response = await addDoc(ordersRef, order);
 
     setIdOrder(response.id);
-    updateStock()
-    clearCart()
+    updateStock();
+    clearCart();
   };
 
   //funcion no recomendada para proyecto final
-  const updateStock = async() =>{
-    cart.map( async(productCart)=> {
+  const updateStock = async () => {
+    cart.map(async (productCart) => {
       //guardamos la cantidad para luego restarla al stock
-      const quantity = productCart.quantity
-      
-      //borramos el campo quantity
-      delete productCart.quantity
+      const quantity = productCart.quantity;
 
-      const productRef = doc(db, "products", productCart.id )
+      //borramos el campo quantity
+      delete productCart.quantity;
+
+      const productRef = doc(db, "products", productCart.id);
       await setDoc(productRef, {
         ...productCart,
-        stock: productCart.stock - quantity
-      })
-    })
-  }
+        stock: productCart.stock - quantity,
+      });
+    });
+  };
 
   return (
-    <div>
+    <div className="checkout">
       {idOrder ? (
-        <div>
+        <div className="order-generated">
           <h2>Su compra se genero correctamente 😲</h2>
           <p>Guarde el id de su compra: {idOrder}</p>
-          <Link to="/" >Volver al inicio</Link>
+          <Link className="button-order" to="/">Volver al inicio</Link>
         </div>
       ) : (
-        <FormularioCheckout
-          dataForm={dataForm}
-          handleChangeInput={handleChangeInput}
-          handleSubmit={handleSubmit}
-        />
+        <>
+          <FormularioCheckout
+            dataForm={dataForm}
+            handleChangeInput={handleChangeInput}
+            handleSubmit={handleSubmit}
+          />
+        </>
       )}
     </div>
   );

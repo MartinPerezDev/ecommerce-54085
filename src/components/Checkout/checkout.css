@@ -1,0 +1,54 @@
+.checkout{
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-checkout{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-checkout h2{
+  margin-bottom: 50px;
+}
+
+.inputs-form{
+  height: 50px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between ;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.inputs-form label{
+  width: 30%;
+}
+
+.inputs-form input{
+  width: 70%;
+  font-size: 20px;
+}
+
+.inputs-form .submit, .button-order{
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.order-generated {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  height: 200px;
+}
