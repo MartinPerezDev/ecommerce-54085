@@ -7,7 +7,7 @@ import db from "../../db/db";
 
 import "./itemListContainer.css";
 
-const ItemListContainer = ({ saludo }) => {
+const ItemListContainer = ({ greetings }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -54,7 +54,7 @@ const ItemListContainer = ({ saludo }) => {
 
   return (
     <div className="item-list-container">
-      <h2 className="title-items">{saludo}</h2>
+      <h2 className="title-items">{greetings}</h2>
       {loading ? (
         <div className="loading-screen">cargando...</div>
       ) : (
